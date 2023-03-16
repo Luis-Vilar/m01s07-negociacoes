@@ -23,11 +23,8 @@ function Formulario({ quandoAdicionar }) {
       <div className="row justify-content-around">
         <div className="form-group col">
           <GrupoInput
-            classNameDivProp="form-group"
-            classNameLabelProp="form-label"
             etiqueta="Data"
             htmlForProp="data"
-            classNameInputProp="form-control"
             tipo="date"
             min={1}
             step={1}
@@ -38,11 +35,8 @@ function Formulario({ quandoAdicionar }) {
         </div>
         <div className="form-group col">
           <GrupoInput
-            classNameDivProp="form-group"
-            classNameLabelProp="form-label"
             etiqueta="Quantidade"
             htmlForProp="quantidade"
-            classNameInputProp="form-control"
             tipo="number"
             min={1}
             step={1}
@@ -54,14 +48,11 @@ function Formulario({ quandoAdicionar }) {
 
         <div className="form-group col">
           <GrupoInput
-            classNameDivProp="form-group"
-            classNameLabelProp="form-label"
             etiqueta="Valor"
             htmlForProp="valor"
-            classNameInputProp="form-control"
             tipo="number"
             min={1}
-            step={1}
+            step={0.1}
             id="valor"
             valor={valor}
             aoDigitar={(event) => setValor(event.target.value)}

@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 function Tabela(props) {
   return (
-    <div class="my-5">
-      <table class="table table-hover table-bordered">
+    <div className="my-5">
+      <table className="table table-hover table-bordered">
         <thead>
           <tr>
             <th scope="col">Data</th>
@@ -18,8 +18,13 @@ function Tabela(props) {
               <td>{negociacao.dataNegociacao}</td>
               <td>{negociacao.quantidadeNegociacao}</td>
               <td>{negociacao.valorNegociacao}</td>
-              <td>             
-              <td>{Number(negociacao.valorNegociacao * negociacao.quantidadeNegociacao).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+              <td>
+                {Number(
+                  negociacao.valorNegociacao * negociacao.quantidadeNegociacao
+                ).toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
               </td>
             </tr>
           ))}

@@ -3,19 +3,30 @@ import { useState } from "react";
 
 function Formulario({ quandoAdicionar }) {
   const [data, setData] = useState("");
-  const [quantidade, setQuantidade] = useState("");
-  const [valor, setValor] = useState("");
+  const [quantidade, setQuantidade] = useState(0);
+  const [valor, setValor] = useState(0);
 
   function criaNegociacao() {
-    const negociacao = {
-      dataNegociacao: data,
-      quantidadeNegociacao: quantidade,
-      valorNegociacao: valor,
-    };
+    if (data === "" || quantidade === 0 || valor === 0) {
+      alert("Erro ao criar negociacao, esqueceu de preencher algum campo, ou valor e quantedade em zero?");
+      return;
+    } else {
+      const negociacao = {
+        dataNegociacao: data,
+        quantidadeNegociacao: quantidade,
+        valorNegociacao: valor,
+      };
+      quandoAdicionar(negociacao);
 
-    console.log(negociacao);
-
-    quandoAdicionar(negociacao);
+      console.log(
+        `negociacao: ${JSON.stringify(
+          negociacao
+        )} agregada com succeso limpando campos do imput`
+      );
+      setData("");
+      setQuantidade(0);
+      setValor(0);
+    }
   }
 
   return (
@@ -24,7 +35,7 @@ function Formulario({ quandoAdicionar }) {
         <div className="form-group col">
           <GrupoInput
             etiqueta="Data"
-            htmlForProp="data"
+            htmlFor="data"
             tipo="date"
             min={1}
             step={1}
@@ -36,26 +47,26 @@ function Formulario({ quandoAdicionar }) {
         <div className="form-group col">
           <GrupoInput
             etiqueta="Quantidade"
-            htmlForProp="quantidade"
+            htmlFor="quantidade"
             tipo="number"
             min={1}
             step={1}
             id="quantidade"
             valor={quantidade}
-            aoDigitar={(event) => setQuantidade(event.target.value)}
+            aoDigitar={(event) => setQuantidade(event.target.valueAsNumber)}
           />
         </div>
 
         <div className="form-group col">
           <GrupoInput
             etiqueta="Valor"
-            htmlForProp="valor"
+            htmlFor="valor"
             tipo="number"
-            min={1}
-            step={0.1}
+            min={0.01}
+            step={0.01}
             id="valor"
             valor={valor}
-            aoDigitar={(event) => setValor(event.target.value)}
+            aoDigitar={(event) => setValor(event.target.valueAsNumber)}
           />
         </div>
 

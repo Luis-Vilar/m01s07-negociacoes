@@ -19,7 +19,7 @@ function Tabela(props) {
               <td>{negociacao.quantidadeNegociacao}</td>
               <td>{negociacao.valorNegociacao}</td>
               <td>
-                {Number(
+                {(
                   negociacao.valorNegociacao * negociacao.quantidadeNegociacao
                 ).toLocaleString("pt-BR", {
                   style: "currency",

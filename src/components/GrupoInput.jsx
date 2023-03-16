@@ -2,31 +2,30 @@ import PropTypes from "prop-types";
 
 function GrupoInput(props) {
   return (
-    <div className={props.classNameProp}>
-      <label htmlFor={props.htmlForProp} className={props.classNameLabelProp}>
-        {props.textProp}
+    <div className={props.classNameDivProp}>
+      <label htmlFor={props.htmlForProp} className={props.classNameLabelProp} >
+        {props.etiqueta}
       </label>
       <input
-        type={props.typeProp}
-        min={props.minProp}
+        type={props.tipo}
+        min={props.min}
         step={props.stepProp}
-        id={props.idProp}
+        id={props.id}
         className={props.classNameInputProp}
-        value={props.valueProp}
-        // onChange={props.onChangeProp}
+        value={props.valor}
         required
+        onChange={props.aoDigitar}
       />
     </div>
   );
 }
 
 GrupoInput.propTypes = {
-  idProp: PropTypes.string.isRequired,
-  classNameLabelProp: PropTypes.string.isRequired,
-  typeProp: PropTypes.string.isRequired,
-  minProp: PropTypes.number,
-  stepProp: PropTypes.number,
-  valueProp: PropTypes.number.isRequired,
-//   onChangeProp: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  etiqueta: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  min: PropTypes.number,
+  step: PropTypes.number,
+  aoDigitar: PropTypes.func.isRequired,
 };
 export default GrupoInput;

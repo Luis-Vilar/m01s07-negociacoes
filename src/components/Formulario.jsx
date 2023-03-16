@@ -1,56 +1,79 @@
 import GrupoInput from "./GrupoInput";
+import { useState } from "react";
 
-function Formulario(props) {
+function Formulario({ quandoAdicionar }) {
+  const [data, setData] = useState("");
+  const [quantidade, setQuantidade] = useState("");
+  const [valor, setValor] = useState("");
+
+  function criaNegociacao() {
+    const negociacao = {
+      dataNegociacao: data,
+      quantidadeNegociacao: quantidade,
+      valorNegociacao: valor,
+    };
+
+    console.log(negociacao);
+
+    quandoAdicionar(negociacao);
+  }
 
   return (
     <form className="form  container form">
       <div className="row justify-content-around">
         <div className="form-group col">
           <GrupoInput
-            textProp="Data"
+            classNameDivProp="form-group"
             classNameLabelProp="form-label"
-            classNameProp="form-group"
-            htmlForProps="data"
-            typeProp="date"
-            minProp={1}
-            stepProp={1}
-            idProp="data"
+            etiqueta="Data"
+            htmlForProp="data"
             classNameInputProp="form-control"
-            valueProp={1}
+            tipo="date"
+            min={1}
+            step={1}
+            id="data"
+            valor={data}
+            aoDigitar={(event) => setData(event.target.value)}
           />
         </div>
         <div className="form-group col">
           <GrupoInput
-            textProp="Quantidade"
+            classNameDivProp="form-group"
             classNameLabelProp="form-label"
-            classNameProp="form-group"
-            htmlForProps="quantidade"
-            typeProp="number"
-            minProp={1}
-            stepProp={1}
-            idProp="quantidade"
+            etiqueta="Quantidade"
+            htmlForProp="quantidade"
             classNameInputProp="form-control"
-            valueProp={1}
+            tipo="number"
+            min={1}
+            step={1}
+            id="quantidade"
+            valor={quantidade}
+            aoDigitar={(event) => setQuantidade(event.target.value)}
           />
         </div>
 
         <div className="form-group col">
           <GrupoInput
-            textProp="Valor"
+            classNameDivProp="form-group"
             classNameLabelProp="form-label"
-            classNameProp="form-group"
-            htmlForProps="valor"
-            typeProp="number"
-            minProp={1}
-            stepProp={1}
-            idProp="valor"
+            etiqueta="Valor"
+            htmlForProp="valor"
             classNameInputProp="form-control"
-            valueProp={1}
+            tipo="number"
+            min={1}
+            step={1}
+            id="valor"
+            valor={valor}
+            aoDigitar={(event) => setValor(event.target.value)}
           />
         </div>
 
         <div className="col-1 d-flex align-items-end justify-content-end">
-          <button className="btn btn-primary" type="button">
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={criaNegociacao}
+          >
             Incluir
           </button>
         </div>
@@ -58,7 +81,5 @@ function Formulario(props) {
     </form>
   );
 }
-
-
 
 export default Formulario;

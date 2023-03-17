@@ -33,7 +33,7 @@ function Tabela(props) {
 
         <tfoot className="bg-body-secondary">
           <tr>
-            <td colspan="3" className="text-end ">Total</td>
+            <td colSpan="3" className="text-end ">Total</td>
             <td className="text-end text-danger ">{calcularTotal(props.negociacoes)}</td>
           </tr>
         </tfoot>
